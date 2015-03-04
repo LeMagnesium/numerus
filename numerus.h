@@ -1,3 +1,11 @@
+// Programm ßý Mg
+/*
+    header file of the numerus class
+    Copyright 2015 (c) Mg, <insert real name here>
+    License : GPLv3
+*/
+
+
 /* Numerus ex machina */
 
 #ifndef NUMERUS_H_INCLUDED
@@ -16,6 +24,7 @@ public:
     Numerus(Numerus const& a);
     ~Numerus();
     void init(long init_numbers);
+    void init(std::vector<int> init_array);
     Numerus& operator+=(Numerus const& to_add);
     Numerus& operator-=(Numerus const& to_add);
     Numerus& operator*=(Numerus const& to_add);

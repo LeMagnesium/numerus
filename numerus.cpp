@@ -1,17 +1,15 @@
+// Programm ßý Mg
 /*
- § Implementation of the numerus class ßý Mg
- § License GPLv3 or later
- §
+    Implementation of the numerus class
+    Copyright 2015 (c) Mg, <insert real name here>
+    License GPLv3
 */
 
 #include <iostream>
 #include <vector>
 #include <string>
 #include <cmath>
-#include <assert.h>
 #include "numerus.h"
-
-#define NUMERUS_VERBOSE 0
 
 using namespace std;
 
@@ -24,10 +22,6 @@ Numerus::Numerus(int init_number)
 /// Constructeur (long)
 Numerus::Numerus(long init_number)
 {
-    if (Numerus::checkIntegrityOfNumber(init_number,false) == false)
-    {
-        init_number = 0;
-    }
     init(init_number);
 }
 
@@ -64,21 +58,30 @@ void Numerus::init(long init_number)
         numbers[i++] = numAt;
     }
     while (init_number > 0);
+
+    // Check integrity of number
+    check();
 }
 
 /// Constructeur (std::vector<int>)
 Numerus::Numerus(std::vector<int> init_array)
 {
+    init(init_array);
+}
+
+/// Init with std::vector<int>
+void Numerus::init(std::vector<int> init_array)
+{
     if (Numerus::checkIntegrityOfNumber(init_array) == false) {init(0);return;}
     int rang(0);
-    for (int j = init_array.size()-1; j >= 0; j--)
+    for (int i = init_array.size()-1; i >= 0; i--, rang++)
     {
         numbers.push_back(0);
-    }
-    for (int i = init_array.size()-1; i >= 0; i--,rang++)
-    {
         numbers[rang] = init_array[i];
     }
+
+    // Check integrity of number
+    check();
 }
 
 /// Constructeur de copie (Numerus const&)
@@ -104,16 +107,25 @@ std::ostream &operator<<(std::ostream &flux, Numerus const& numere)
 }
 
 /// Opérateur +=
-Numerus& Numerus::operator+=(Numerus const& to_add)
+Numerus& Numerus::operator+=(Numerus const& a_add)
 {
-    // Equilizing
+
+    Numerus to_add(a_add);
+
+    // Equalizing
     for (int i = to_add.numbers.size()-numbers.size(); i > 0; i--)
     {
         numbers.push_back(0);
     }
 
+    // Equalizing
+    for (int i = numbers.size()-to_add.numbers.size(); i > 0; i--)
+    {
+        to_add.numbers.push_back(0);
+    }
+
     // Adding
-    for (unsigned int j = 0; j < numbers.size(); j++)
+    for (int j = numbers.size()-1; j >= 0 ; j--)
     {
         numbers[j] += to_add.numbers[j];
     }
@@ -125,22 +137,29 @@ Numerus& Numerus::operator+=(Numerus const& to_add)
 }
 
 /// Opérateur -=
-Numerus& Numerus::operator-=(Numerus const& to_add)
+Numerus& Numerus::operator-=(Numerus const& a_sub)
 {
-    if (to_add > *this)
+    if (a_sub > *this)
     {
         ///FIXME I'm not mathematically logic
         return *this;
     }
+    Numerus to_add(a_sub);
 
-    // Equilizing
+    // Equalizing
     for (int i = to_add.numbers.size()-numbers.size(); i > 0; i--)
     {
         numbers.push_back(0);
     }
 
+    // Equalizing
+    for (int i = numbers.size()-to_add.numbers.size(); i > 0; i--)
+    {
+        to_add.numbers.push_back(0);
+    }
+
     // Substracting
-    for (unsigned int j = 0; j < numbers.size(); j++)
+    for (int j = numbers.size()-1; j >= 0 ; j--)
     {
         numbers[j] -= to_add.numbers[j];
     }
@@ -150,7 +169,6 @@ Numerus& Numerus::operator-=(Numerus const& to_add)
 
     return *this;
 }
-
 /// Check
 void Numerus::check()
 {
@@ -158,6 +176,10 @@ void Numerus::check()
     {
         for (unsigned int j = 0; j < numbers.size(); j++)
         {
+            while (numbers.size() > 1 && numbers[numbers.size()-1] == 0)
+            {
+                numbers.pop_back();
+            }
             while (numbers[j] < 0)
             {
                 if (j+1 == numbers.size()) // END OF TABLE
@@ -177,11 +199,6 @@ void Numerus::check()
                 numbers[j+1]++;
                 numbers[j]-=10;
             }
-            while (numbers[numbers.size()-1] == 0)
-            {
-                numbers.pop_back();
-            }
-            j++;
         }
     }
 }
@@ -202,7 +219,7 @@ bool Numerus::isCorrect() const
     }
 
     // Check for too large table
-    if (numbers[numbers.size()-1] == 0) return false;
+    if (numbers.size() > 1 && numbers[numbers.size()-1] == 0) return false;
 
     return true;
 }
@@ -340,16 +357,29 @@ Numerus operator- (Numerus const& a, Numerus const& b)
 /// Opérateur *=
 Numerus& Numerus::operator*=(Numerus const& a)
 {
-    // Equilizing
-    for (int i = a.numbers.size()-numbers.size(); i > 0; i--)
+    Numerus to_add(a);
+
+    // Equalizing
+    for (int i = to_add.numbers.size()-numbers.size(); i > 0; i--)
     {
         numbers.push_back(0);
     }
 
-    // Adding
-    for (unsigned int j = 0; j < numbers.size(); j++)
+    // Equalizing (other side)
+    for (int i = numbers.size()-to_add.numbers.size(); i > 0; i--)
     {
-        numbers[j] *= a.numbers[j];
+        to_add.numbers.push_back(0);
+    }
+
+    // Multiplying
+    for (int j = numbers.size()-1; j >= 0 ; j--)
+    {
+        int total(0);
+        for (unsigned int i = 0;i < numbers.size();i++)
+        {
+            total += (numbers[j] * to_add.numbers[i]) * pow(10,i);
+        }
+        numbers[j] = total;
     }
 
     // Check integrity of number
