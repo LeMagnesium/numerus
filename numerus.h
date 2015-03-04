@@ -26,8 +26,9 @@ public:
     void init(long init_numbers);
     void init(std::vector<int> init_array);
     Numerus& operator+=(Numerus const& to_add);
-    Numerus& operator-=(Numerus const& to_add);
-    Numerus& operator*=(Numerus const& to_add);
+    Numerus& operator-=(Numerus const& to_sub);
+    Numerus& operator*=(Numerus const& to_mul);
+    Numerus& operator%=(Numerus const& to_mod);
     int size() const;
 
 private:
@@ -52,6 +53,7 @@ std::ostream &operator<<(std::ostream &flux, Numerus const& numere);
 Numerus operator+ (Numerus const& a, Numerus const& b);
 Numerus operator- (Numerus const& a, Numerus const& b);
 Numerus operator* (Numerus const& a, Numerus const& b);
+Numerus operator% (Numerus const& a, Numerus const& b);
 bool operator< (Numerus const& a, Numerus const& b);
 bool operator<=(Numerus const& a, Numerus const& b);
 bool operator> (Numerus const& a, Numerus const& b);

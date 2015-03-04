@@ -55,6 +55,13 @@ int main()
     *result = *operand1 * *operand2;
     cout << *result << endl;
 
+    /// Modulo
+    operand1->init(10);
+    operand2->init(3);
+    *result = *operand1 % *operand2;
+
+    cout << *operand1 << " * " << *operand2 << " = " << *result << endl;
+
     /// Euclidean division
     //TODO This ^
 

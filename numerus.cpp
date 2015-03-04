@@ -46,7 +46,7 @@ void Numerus::init(long init_number)
         numbers.push_back(0);
         rang++;
     }
-    while(init_number > pow(10,rang));
+    while(init_number >= pow(10,rang));
 
     //#2 Copier les nombres dans le tableau
     int i = 0;
@@ -425,4 +425,19 @@ template<typename T> bool Numerus::checkIntegrityOfNumber(T to_check, bool isRow
     }
 
     return true;
+}
+
+/// Operator %=
+Numerus& Numerus::operator%=(Numerus const& to_mod)
+{
+    while (to_mod <= *this) {*this+=to_mod;}
+    return *this;
+}
+
+/// Opérateur %
+Numerus operator% (Numerus const& a, Numerus const& b)
+{
+    Numerus copie(a);
+    copie%=b;
+    return copie;
 }
