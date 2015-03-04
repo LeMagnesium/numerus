@@ -1,0 +1,7 @@
+bin/*
+!bin/Debug/numerus
+*.depend
+*.cbp
+*.layout
+obj/
+obj/*
