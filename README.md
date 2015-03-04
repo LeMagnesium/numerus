@@ -1,10 +1,9 @@
-Numerus
-#######
+# Numerus
 
 C++ class used to perform mathematics on quite big numbers,
 may be very slow on some computers.
 
-# How to test it?
+## How to test it?
 Open a terminal. Then type :
 ./build.sh
 
