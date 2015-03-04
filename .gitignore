@@ -5,3 +5,4 @@ bin/*
 *.layout
 obj/
 obj/*
+main.cpp

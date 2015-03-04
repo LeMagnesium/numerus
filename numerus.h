@@ -19,10 +19,13 @@ public:
     Numerus& operator+=(Numerus const& to_add);
     Numerus& operator-=(Numerus const& to_add);
     Numerus& operator*=(Numerus const& to_add);
-    Numerus& operator/=(Numerus const& to_add); /// WIP
     int size() const;
 
 private:
+
+    static bool checkIntegrityOfNumber(std::vector<int> to_check);
+    template<typename T> static bool checkIntegrityOfNumber(T to_check, bool isRow);
+    static void sendInDebugStream(std::string const to_send);
 
     void check();
     bool isCorrect() const;
@@ -40,7 +43,6 @@ std::ostream &operator<<(std::ostream &flux, Numerus const& numere);
 Numerus operator+ (Numerus const& a, Numerus const& b);
 Numerus operator- (Numerus const& a, Numerus const& b);
 Numerus operator* (Numerus const& a, Numerus const& b);
-Numerus operator/ (Numerus const& a, Numerus const& b); /// WIP
 bool operator< (Numerus const& a, Numerus const& b);
 bool operator<=(Numerus const& a, Numerus const& b);
 bool operator> (Numerus const& a, Numerus const& b);
