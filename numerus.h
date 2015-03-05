@@ -29,6 +29,7 @@ public:
     Numerus& operator-=(Numerus const& to_sub);
     Numerus& operator*=(Numerus const& to_mul);
     Numerus& operator%=(Numerus const& to_mod);
+    Numerus& operator+=(int const& to_add);
     int size() const;
 
 private:
@@ -60,5 +61,7 @@ bool operator> (Numerus const& a, Numerus const& b);
 bool operator>=(Numerus const& a, Numerus const& b);
 bool operator==(Numerus const& a, Numerus const& b);
 bool operator!=(Numerus const& a, Numerus const& b);
+
+Numerus operator+ (Numerus const& a, int const& b);
 
 #endif // NUMERUS_H_INCLUDED

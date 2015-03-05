@@ -441,3 +441,19 @@ Numerus operator% (Numerus const& a, Numerus const& b)
     copie%=b;
     return copie;
 }
+
+/// Operator += using int
+Numerus& Numerus::operator+=(int const& a)
+{
+    Numerus tmp(a);
+    *this+=tmp;
+    return *this;
+}
+
+/// Operator + using int
+Numerus operator+ (Numerus const& a, int const& b)
+{
+    Numerus copie(a);
+    copie+=b;
+    return copie;
+}

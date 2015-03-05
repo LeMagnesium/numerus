@@ -65,6 +65,12 @@ int main()
     /// Euclidean division
     //TODO This ^
 
+    /// += using int
+    operand1->init(78);
+    int a = 9;
+    *result = *operand1 + a;
+    cout << *operand1 << " + " << a << " = " << *result;
+
     // Liberate memory
     delete operand1;
     delete operand2;
