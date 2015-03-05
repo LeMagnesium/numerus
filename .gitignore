@@ -6,3 +6,4 @@ bin/*
 obj/
 obj/*
 numerus-test
+numerus.o
