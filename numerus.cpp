@@ -244,108 +244,6 @@ int Numerus::operator[](int num) const
     return numbers[num];
 }
 
-/// Opérateur <
-bool operator< (Numerus const& a, Numerus const& b)
-{
-    int compa(0), compb(0);
-    for (int i = 0; i < max(a.size(),b.size()); i++)
-    {
-        if (a.size() <= i)
-        {
-            compa = 0;
-        }
-        else
-        {
-            compa = a[i];
-        }
-        if (b.size() <= i)
-        {
-            compb = 0;
-        }
-        else
-        {
-            compb = b[i];
-        }
-
-        if (compa >= compb) return false;
-    }
-    return true;
-}
-
-/// Opérateur <=
-bool operator<=(Numerus const& a, Numerus const& b)
-{
-    return (a < b || a == b);
-}
-
-/// Opérateur >=
-bool operator>=(Numerus const& a, Numerus const& b)
-{
-    return (a > b || a == b);
-}
-
-/// Opérateur >
-bool operator> (Numerus const& a, Numerus const& b)
-{
-    int compa(0), compb(0);
-    for (int i = 0; i < max(a.size(),b.size()); i++)
-    {
-        if (a.size() <= i)
-        {
-            compa = 0;
-        }
-        else
-        {
-            compa = a[i];
-        }
-        if (b.size() <= i)
-        {
-            compb = 0;
-        }
-        else
-        {
-            compb = b[i];
-        }
-
-        if (compa <= compb) return false;
-    }
-    return true;
-}
-
-/// Opérateur ==
-bool operator==(Numerus const& a, Numerus const& b)
-{
-    int compa(0), compb(0);
-    for (int i = 0; i < max(a.size(),b.size()); i++)
-    {
-        if (a.size() <= i)
-        {
-            compa = 0;
-        }
-        else
-        {
-            compa = a[i];
-        }
-        if (b.size() <= i)
-        {
-            compb = 0;
-        }
-        else
-        {
-            compb = b[i];
-        }
-
-        if (compa != compb) return false;
-    }
-    return true;
-}
-
-/// Opérateur !=
-bool operator!=(Numerus const& a, Numerus const& b)
-{
-    return !(a == b);
-}
-
 /// Opérateur -
 Numerus operator- (Numerus const& a, Numerus const& b)
 {
@@ -455,5 +353,28 @@ Numerus operator+ (Numerus const& a, int const& b)
 {
     Numerus copie(a);
     copie+=b;
+    return copie;
+}
+
+/// Operator ^=
+Numerus& Numerus::operator^=(Numerus const& a)
+{
+    if (a == 0) {this->init(1);}
+    Numerus iter(a), me(*this);
+
+    for (;iter > Numerus(1);iter -= 1)
+    {
+        me *= *this;
+    }
+
+    this->init(Numerus::reverseArray(me.numbers));
+    return *this;
+}
+
+/// Operator ^
+Numerus operator^ (Numerus const& a, Numerus const& b)
+{
+    Numerus copie(a);
+    copie^=b;
     return copie;
 }

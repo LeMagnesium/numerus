@@ -60,7 +60,7 @@ int main()
     operand2->init(3);
     *result = *operand1 % *operand2;
 
-    cout << *operand1 << " * " << *operand2 << " = " << *result << endl;
+    cout << *operand1 << " % " << *operand2 << " = " << *result << endl;
 
     /// Euclidean division
     //TODO This ^
@@ -69,7 +69,13 @@ int main()
     operand1->init(78);
     int a = 9;
     *result = *operand1 + a;
-    cout << *operand1 << " + " << a << " = " << *result;
+    cout << *operand1 << " + " << a << " = " << *result << endl;
+
+    /// Power
+    operand1->init(3);
+    operand2->init(4);
+    *result = *operand1 ^ *operand2;
+    cout << *operand1 << "^" << *operand2 << " = " << *result << endl;
 
     // Liberate memory
     delete operand1;

@@ -29,8 +29,11 @@ public:
     Numerus& operator-=(Numerus const& to_sub);
     Numerus& operator*=(Numerus const& to_mul);
     Numerus& operator%=(Numerus const& to_mod);
+    Numerus& operator^=(Numerus const& to_mod);
     Numerus& operator+=(int const& to_add);
     int size() const;
+
+    static std::vector<int> reverseArray(std::vector<int> &normal_array);
 
 private:
 
@@ -55,6 +58,7 @@ Numerus operator+ (Numerus const& a, Numerus const& b);
 Numerus operator- (Numerus const& a, Numerus const& b);
 Numerus operator* (Numerus const& a, Numerus const& b);
 Numerus operator% (Numerus const& a, Numerus const& b);
+Numerus operator^ (Numerus const& a, Numerus const& b);
 bool operator< (Numerus const& a, Numerus const& b);
 bool operator<=(Numerus const& a, Numerus const& b);
 bool operator> (Numerus const& a, Numerus const& b);
