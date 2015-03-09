@@ -32,7 +32,7 @@ int main()
     generateNumbers(res, 10);
     generateNumbers(domus, 3);
     operand1->init(res); operand2->init(domus);
-
+    cout << "Add::";
     cout << *operand1 << " + " << *operand2 << " = ";
     *result = *operand1 + *operand2;
     cout << *result << endl;
@@ -42,6 +42,7 @@ int main()
     generateNumbers(domus, 3);
     operand1->init(res); operand2->init(domus);
 
+    cout << "Sub::";
     cout << *operand1 << " - " << *operand2 << " = ";
     *result = *operand1 - *operand2;
     cout << *result << endl;
@@ -51,6 +52,7 @@ int main()
     generateNumbers(domus, 3);
     operand1->init(res); operand2->init(domus);
 
+    cout << "Mul::";
     cout << *operand1 << " * " << *operand2 << " = ";
     *result = *operand1 * *operand2;
     cout << *result << endl;
@@ -60,6 +62,7 @@ int main()
     operand2->init(3);
     *result = *operand1 % *operand2;
 
+    cout << "Mod::";
     cout << *operand1 << " % " << *operand2 << " = " << *result << endl;
 
     /// Euclidean division
@@ -69,13 +72,27 @@ int main()
     operand1->init(78);
     int a = 9;
     *result = *operand1 + a;
+    cout << "AddInt::";
     cout << *operand1 << " + " << a << " = " << *result << endl;
 
     /// Power
     operand1->init(3);
     operand2->init(4);
-    *result = *operand1 ^ *operand2;
-    cout << *operand1 << "^" << *operand2 << " = " << *result << endl;
+    *result = pow(*operand1,*operand2);
+    cout << "Pow::";
+    cout << "pow(" << *operand1 << ", " << *operand2 << ") = " << *result << endl;
+
+    /// Greater than
+    operand1->init(8);
+    operand2->init(10);
+    cout << "Grt::";
+    cout << *operand1 << " > " << *operand2 << " => " << (*operand1 > *operand2) << endl;
+
+    /// Smaller than
+    operand1->init(3);
+    operand2->init(10);
+    cout << "Smt::";
+    cout << *operand1 << " < " << *operand2 << " => " << (*operand1 < *operand2) << endl;
 
     // Liberate memory
     delete operand1;

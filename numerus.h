@@ -68,4 +68,7 @@ bool operator!=(Numerus const& a, Numerus const& b);
 
 Numerus operator+ (Numerus const& a, int const& b);
 
+/// Utils
+Numerus pow(Numerus const& a, Numerus const& b);
+
 #endif // NUMERUS_H_INCLUDED

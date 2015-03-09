@@ -328,7 +328,7 @@ template<typename T> bool Numerus::checkIntegrityOfNumber(T to_check, bool isRow
 /// Operator %=
 Numerus& Numerus::operator%=(Numerus const& to_mod)
 {
-    while (to_mod <= *this) {*this+=to_mod;}
+    while (to_mod <= *this) {*this-=to_mod;}
     return *this;
 }
 
@@ -357,24 +357,7 @@ Numerus operator+ (Numerus const& a, int const& b)
 }
 
 /// Operator ^=
-Numerus& Numerus::operator^=(Numerus const& a)
-{
-    if (a == 0) {this->init(1);}
-    Numerus iter(a), me(*this);
-
-    for (;iter > Numerus(1);iter -= 1)
-    {
-        me *= *this;
-    }
-
-    this->init(Numerus::reverseArray(me.numbers));
-    return *this;
-}
+/// FIXME: Operator ^= is Euclidean division!
 
 /// Operator ^
-Numerus operator^ (Numerus const& a, Numerus const& b)
-{
-    Numerus copie(a);
-    copie^=b;
-    return copie;
-}
+/// FIXME: Operator ^ is Euclidean division!

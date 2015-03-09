@@ -20,7 +20,7 @@ using namespace std;
 bool operator< (Numerus const& a, Numerus const& b)
 {
     int compa(0), compb(0);
-    for (int i = 0; i < max(a.size(),b.size()); i++)
+    for (int i = max(a.size(),b.size())-1;i >= 0; i--)
     {
         if (a.size() <= i)
         {
@@ -38,10 +38,9 @@ bool operator< (Numerus const& a, Numerus const& b)
         {
             compb = b[i];
         }
-
-        if (compa >= compb) return false;
+        if (compa != compb) return (compa < compb?true:false);
     }
-    return true;
+    return false;
 }
 
 /// Opérateur <=
@@ -60,7 +59,7 @@ bool operator>=(Numerus const& a, Numerus const& b)
 bool operator> (Numerus const& a, Numerus const& b)
 {
     int compa(0), compb(0);
-    for (int i = 0; i < max(a.size(),b.size()); i++)
+    for (int i = max(a.size(),b.size())-1;i >= 0; i--)
     {
         if (a.size() <= i)
         {
@@ -78,10 +77,9 @@ bool operator> (Numerus const& a, Numerus const& b)
         {
             compb = b[i];
         }
-
-        if (compa <= compb) return false;
+        if (compa != compb) return (compa > compb?true:false);
     }
-    return true;
+    return false;
 }
 
 /// Opérateur ==

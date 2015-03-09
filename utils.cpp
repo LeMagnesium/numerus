@@ -18,3 +18,16 @@ std::vector<int> Numerus::reverseArray(std::vector<int> &normal_array)
     }
     return returned;
 }
+
+Numerus pow(Numerus const& a, Numerus const& b)
+{
+    Numerus iter(b), me(a), copie(me);
+    if (b == 0) {me.init(1);}
+
+    for (;iter > Numerus(1);iter -= 1)
+    {
+        me *= copie;
+    }
+
+    return me;
+}
