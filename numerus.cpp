@@ -357,7 +357,19 @@ Numerus operator+ (Numerus const& a, int const& b)
 }
 
 /// Operator ^=
-/// FIXME: Operator ^= is Euclidean division!
+Numerus& Numerus::selfEuclidean(Numerus const& a)
+{
+    Numerus compteur(0);
+    *this-=*this%a;
+    while (*this > 0) {*this -= a;compteur += 1;}
+    this->init(compteur.numbers);
+    return *this;
+}
 
 /// Operator ^
-/// FIXME: Operator ^ is Euclidean division!
+Numerus Numerus::euclidean(Numerus const& a, Numerus const& b)
+{
+    Numerus copie(a);
+    copie.selfEuclidean(b);
+    return copie;
+}

@@ -66,7 +66,12 @@ int main()
     cout << *operand1 << " % " << *operand2 << " = " << *result << endl;
 
     /// Euclidean division
-    //TODO This ^
+    operand1->init(10);
+    operand2->init(3);
+    *result = Numerus::euclidean(*operand1, *operand2);
+
+    cout << "Euc::";
+    cout << *operand1 << " ^ " << *operand2 << " = " << *result << endl;
 
     /// += using int
     operand1->init(78);
