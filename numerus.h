@@ -31,10 +31,13 @@ public:
     Numerus& operator%=(Numerus const& to_mod);
     Numerus& selfEuclidean(Numerus const& to_ediv);
     Numerus& operator+=(int const& to_add);
+    Numerus& operator-=(int const& to_sub);
     int size() const;
 
     static std::vector<int> reverseArray(std::vector<int> &normal_array);
     static Numerus euclidean(Numerus const& a, Numerus const& b);
+    static int getIntRow(int const& a, int const& b);
+    static int getIntSize(int const& a);
 
 private:
 
@@ -50,8 +53,11 @@ private:
 
     friend std::ostream &operator<<(std::ostream &flux, Numerus const& numere);
     friend bool operator< (Numerus const& a, Numerus const& b);
+    friend bool operator< (Numerus const& a, int const& b);
     friend bool operator> (Numerus const& a, Numerus const& b);
+    friend bool operator> (Numerus const& a, int const& b);
     friend bool operator==(Numerus const& a, Numerus const& b);
+    friend bool operator==(Numerus const& a, int const& b);
 };
 
 std::ostream &operator<<(std::ostream &flux, Numerus const& numere);
@@ -66,6 +72,13 @@ bool operator> (Numerus const& a, Numerus const& b);
 bool operator>=(Numerus const& a, Numerus const& b);
 bool operator==(Numerus const& a, Numerus const& b);
 bool operator!=(Numerus const& a, Numerus const& b);
+
+bool operator< (Numerus const& a, int const& b);
+bool operator<=(Numerus const& a, int const& b);
+bool operator> (Numerus const& a, int const& b);
+bool operator>=(Numerus const& a, int const& b);
+bool operator==(Numerus const& a, int const& b);
+bool operator!=(Numerus const& a, int const& b);
 
 Numerus operator+ (Numerus const& a, int const& b);
 

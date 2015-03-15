@@ -24,10 +24,35 @@ Numerus pow(Numerus const& a, Numerus const& b)
     Numerus iter(b), me(a), copie(me);
     if (b == 0) {me.init(1);}
 
-    for (;iter > Numerus(1);iter -= 1)
+    for (;iter > 1;iter -= 1)
     {
         me *= copie;
     }
 
     return me;
+}
+
+int Numerus::getIntRow(int const& a, int const& b)
+{
+    if (b < 0 || Numerus::getIntSize(a)-1 < b) return 0;
+
+    int copa(a);
+    for (int i = 0; i < b; i++)
+    {
+        copa-=(copa%10);
+        copa/=10;
+    }
+    return copa%10;
+}
+
+int Numerus::getIntSize(int const& a)
+{
+    int copa(a),iter(0);
+    while (copa > 0)
+    {
+        copa-=(copa%10);
+        copa/=10;
+        iter++;
+    }
+    return iter;
 }

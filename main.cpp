@@ -32,7 +32,7 @@ int main()
     generateNumbers(res, 10);
     generateNumbers(domus, 3);
     operand1->init(res); operand2->init(domus);
-    cout << "Add::";
+    cout << "Add:: ";
     cout << *operand1 << " + " << *operand2 << " = ";
     *result = *operand1 + *operand2;
     cout << *result << endl;
@@ -42,7 +42,7 @@ int main()
     generateNumbers(domus, 3);
     operand1->init(res); operand2->init(domus);
 
-    cout << "Sub::";
+    cout << "Sub:: ";
     cout << *operand1 << " - " << *operand2 << " = ";
     *result = *operand1 - *operand2;
     cout << *result << endl;
@@ -52,7 +52,7 @@ int main()
     generateNumbers(domus, 3);
     operand1->init(res); operand2->init(domus);
 
-    cout << "Mul::";
+    cout << "Mul:: ";
     cout << *operand1 << " * " << *operand2 << " = ";
     *result = *operand1 * *operand2;
     cout << *result << endl;
@@ -62,7 +62,7 @@ int main()
     operand2->init(3);
     *result = *operand1 % *operand2;
 
-    cout << "Mod::";
+    cout << "Mod:: ";
     cout << *operand1 << " % " << *operand2 << " = " << *result << endl;
 
     /// Euclidean division
@@ -70,36 +70,43 @@ int main()
     operand2->init(3);
     *result = Numerus::euclidean(*operand1, *operand2);
 
-    cout << "Euc::";
+    cout << "Euc:: ";
     cout << *operand1 << " ^ " << *operand2 << " = " << *result << endl;
 
     /// += using int
     operand1->init(78);
     int a = 9;
     *result = *operand1 + a;
-    cout << "AddInt::";
+    cout << "Adt:: ";
     cout << *operand1 << " + " << a << " = " << *result << endl;
 
     /// Power
     operand1->init(3);
     operand2->init(4);
     *result = pow(*operand1,*operand2);
-    cout << "Pow::";
+    cout << "Pow:: ";
     cout << "pow(" << *operand1 << ", " << *operand2 << ") = " << *result << endl;
 
     /// Greater than
     operand1->init(8);
     operand2->init(10);
-    cout << "Grt::";
+    cout << "Grt:: ";
     cout << *operand1 << " > " << *operand2 << " => " << (*operand1 > *operand2) << endl;
 
     /// Smaller than
     operand1->init(3);
     operand2->init(10);
-    cout << "Smt::";
+    cout << "Smt:: ";
     cout << *operand1 << " < " << *operand2 << " => " << (*operand1 < *operand2) << endl;
 
-    // Liberate memory
+    /// Utils : Get integer row and get integer size
+    int d(rand()%100000), e(rand()%5);
+    cout << "GIT:: ";
+    cout << d << " #" << e << " => " << Numerus::getIntRow(d,e) << endl;
+    cout << "GIS:: ";
+    cout << "Size of " << d << " => " << Numerus::getIntSize(d) << endl;
+
+    / Liberate memory
     delete operand1;
     delete operand2;
     operand1 = operand2 = 0;
