@@ -169,6 +169,9 @@ Numerus& Numerus::operator-=(Numerus const& a_sub)
 
     return *this;
 }
+
+
+
 /// Check
 void Numerus::check()
 {
@@ -345,6 +348,14 @@ Numerus& Numerus::operator+=(int const& a)
 {
     Numerus tmp(a);
     *this+=tmp;
+    return *this;
+}
+
+// Operator -= using int
+Numerus& Numerus::operator-=(int const& a)
+{
+    Numerus tmp(a);
+    *this-=tmp;
     return *this;
 }
 
