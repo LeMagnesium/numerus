@@ -1,3 +1,5 @@
 #!/bin/sh
-g++ main.cpp comparison.cpp utils.cpp numerus.cpp -o numerus-test --std=c++11
-echo "Done building."
+g++ *.cpp -o numerus-test -std=c++0x
+if [ $? = 0 ]; then
+	echo "Done building."
+fi

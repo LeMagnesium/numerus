@@ -89,7 +89,7 @@ bool operator==(Numerus const& a, Numerus const& b)
     for (int i = 0; i < max(a.size(),b.size()); i++)
     {
         if (a.size() <= i) {compa = 0;}
-        else {compa = a[i];
+        else {compa = a[i];}
         if (b.size() <= i) {compb = 0;}
         else {compb = b[i];}
 
@@ -177,3 +177,4 @@ bool operator!=(Numerus const& a, int const& b)
 {
     return !(a == b);
 }
+

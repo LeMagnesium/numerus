@@ -106,7 +106,7 @@ int main()
     cout << "GIS:: ";
     cout << "Size of " << d << " => " << Numerus::getIntSize(d) << endl;
 
-    / Liberate memory
+    /// Liberate memory
     delete operand1;
     delete operand2;
     operand1 = operand2 = 0;
